@@ -36,14 +36,34 @@ def start_game():
 if __name__ == '__main__':
     # Kick off the program by calling the start_game function.
     start_game()
-    print("Welcome to the game!")
+    print("---------------------Welcome to the game!---------------------")
     lucky_Number = random.randrange(1,22)
     print("Let's Play a Game! I'm thinking of a number between 1-22! You have 5 chances")
-    guessed_Number = False
+guessed_Number = False
     
-    while guessed_Number == False:
-      userInput = int(input("Guess 1?"))
-      if userInput == lucky_Number:
+while guessed_Number == False:
+    userInput = int(input("Make a Guess?"))
+    
+    # this statement runs first...
+	# if its True, the other elifs dont run.
+    if userInput == lucky_Number:
         guessed_Number = True
-        print("Great Guess" + lucky_Number + "Is Correct!")
+        print(str(lucky_Number) +  " Great Guess! You Got it")
+        
     
+    # this elif only runs, if the `if` above was False.    
+    elif userInput > lucky_Number:
+        print(" is too high, try again!")
+        
+    
+    # this elif only runs, if the `elif` above was False.    
+    elif userInput < lucky_Number:
+        print(" is too low, try again!")
+        
+    
+    # this elif only runs, if the `elif` above was False.    
+    elif userInput > 5:
+        print(" Your Wrong!" + "Was the correct answer")
+        break
+        
+print("---------------------GAME OVER---------------------")
