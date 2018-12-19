@@ -26,7 +26,25 @@ def print_welcome():
     print("""
     ===============================================
             Welcome to the Guessing Game
-    ===============================================""")
+    ===============================================\n""")
+
+def print_come_back():
+    print("""                                          
+    ===============================================    
+          THANKS FOR PLAYING, COME BACK SOON               
+    ===============================================\n""")
+
+def play_again():
+    try_again = input(" Do you want to play again Y/N:?    \n").lower()
+
+    if try_again in ['y', 'yes']:
+        return True
+
+    elif try_again in ['n', 'no']:
+        return False
+
+    else:
+        print_come_back()
 
 def main():
     '''
@@ -36,7 +54,13 @@ def main():
     2 - Generate a number
     3 - ASK For a number and store it
     '''
-    print_welcome()
+    is_playing = True
+    return print_welcome()
+    
+        
+
+
+
 
 if __name__ == '__main__':
     main()
