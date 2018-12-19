@@ -17,29 +17,17 @@ def prompt_user(message = "Pick a Number From 1 - 8:    "):
               return guess
 
 
-'''
-    - create a random number variable
-'''
-def randomNumber():
+
+def number_gen():
+    '''
+    - Create a Random Generated Number
+
+    '''
     magic_number = random.randint(1, 8)
+    if magic_number == 0:
+        magic_number += 1
     return magic_number
 
-'''
-    - create variable to store user answer
-'''
-def userGuess(message="Pick a Number:   "):
-    user_answer = (input(message))
-
-'''- Checks the users number
-   - Prints users answer and generated number if the guess is correct
-   '''
-def checkUserNumbers(user_answer, magic_number):
-    if user_answer > magic_number:
-     print("---------------------TOO LOW!---------------------")
-    elif user_answer < magic_number:
-        print("---------------------TOO HIGH!---------------------")
-    else:
-        print(" Great Guess the answer {} and you choose {}".format(user_answer, magic_number))
 
 # print a welcome to the user on game start
 def print_welcome():
