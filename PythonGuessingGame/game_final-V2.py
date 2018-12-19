@@ -17,6 +17,12 @@ def randomNumber():
     magic_number = random.randint(1, 8)
     return magic_number
 
+'''
+    - create variable to store user answer
+'''
+def userGuess(message="Pick a Number:   "):
+    user_answer = (input(message))
+
 '''- Checks the users number
    - Prints users answer and generated number if the guess is correct
    '''
