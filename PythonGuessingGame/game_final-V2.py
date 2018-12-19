@@ -47,6 +47,21 @@ def print_come_back():
           THANKS FOR PLAYING, COME BACK SOON               
     ===============================================\n""")
 
+'''
+gets numbers entered by user
+'''
+def get_numbers():
+
+    while True:
+        try:
+
+            guess = int(input("Enter a number:  "))
+        except ValueError:
+            print("--NOT-- a Number!, 1,10, etc. Try Again:\n   ")
+
+        else:
+            return guess
+
 def play_again():
     try_again = input(" Do you want to play again Y/N:?    \n").lower()
 
@@ -69,6 +84,9 @@ def main():
     '''
     is_playing = True
     return print_welcome()
+
+    while play_again():
+        guess = get_numbers()
     
         
 
