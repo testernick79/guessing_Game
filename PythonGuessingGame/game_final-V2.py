@@ -1,14 +1,21 @@
 import random
 
-'''- prompt the user for a number, Handle invalid values
-   - Store a message, return a stored value entered'''
-def useNumbers(message = "Pick a Number:    "):
+def prompt_user(message = "Pick a Number From 1 - 8:    "):
+    '''- prompt the user for a number, Handle invalid values
+       - Store a message, return a stored value entered
+    '''
     while True:
-        try:
-            user_answer = int(input(message))
-            return user_answer
-        except ValueError:
-            print("You must enter a number, Try Again!: ")
+
+          try:
+            guess = int(input(message))
+            if guess < 1 or guess > 8:
+                 raise ValueError("Enter A Value Between 1, and 8, Try again:  ")
+          except ValueError:
+              print("Needs To Be a Number, Try Again")
+
+          else:
+              return guess
+
 
 '''
     - create a random number variable
@@ -72,7 +79,7 @@ def play_again():
         return False
 
     else:
-        print_come_back()
+        print("Please Enter 'Yes' or 'No':\n  " )
 
 def main():
     '''
@@ -82,11 +89,20 @@ def main():
     2 - Generate a number
     3 - ASK For a number and store it
     '''
+    # STEP 1
     is_playing = True
     return print_welcome()
 
-    while play_again():
-        guess = get_numbers()
+        
+
+
+
+
+
+
+
+
+        
     
         
 
