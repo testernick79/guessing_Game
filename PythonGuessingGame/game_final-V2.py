@@ -10,6 +10,13 @@ def useNumbers(message = "Pick a Number:    "):
         except ValueError:
             print("You must enter a number, Try Again!: ")
 
+'''
+    - create a random number variable
+'''
+def randomNumber():
+    magic_number = random.randint(1, 8)
+    return magic_number
+
 '''- Checks the users number
    - Prints users answer and generated number if the guess is correct
    '''
