@@ -60,6 +60,9 @@ def number_gen():
     return magic_number
 
 # print a welcome to the user on game start
+def print_value_error():
+    print("Needs To Be a Number, Try Again")
+
 def print_welcome():
     print("""
     ===============================================
@@ -71,6 +74,9 @@ def print_come_back():
     ===============================================    
           THANKS FOR PLAYING, COME BACK SOON               
     ===============================================\n""")
+
+def print_attempts():
+    print("You attempted: {} Times".format(attempts))
 
 '''
 gets numbers entered by user
@@ -108,16 +114,43 @@ def game_start():
     3 - ASK For a number and store it
     '''
     # STEP 1
+    print_welcome()
+
+    your_score = 0
+    attempts = 0
+    number = number_gen()
+
+    while True:
+        tries = user_guess(number)
+        your_score = attempts
+        print_attempts()
+
+        if your_score == 0:
+           your_score = attempts
+
+        elif your_score < attempts:
+            attempts = your_score
+
+            while True:
+                again = play_again()
+                keep_playing = again
+
+                if keep_playing == ['y', 'yes']:
+                        print(" ------- **Generating A New Random Number** -------")
+                        number = play_again()
+                        print_attempts()
+                        break
+
+                elif keep_playing == ['n', 'no']:
+                        print_come_back()
+                        break
+
+                else:
+                        print_value_error()
 
 
-your_score = 0
-attempts = 0
-number = number_gen()
 
-while True:
-     tries = user_guess(number)
-     your_score = attempts
-     print_welcome()
+
 
 
 
