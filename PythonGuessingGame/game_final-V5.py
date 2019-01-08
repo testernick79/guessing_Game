@@ -9,8 +9,8 @@ def print_welcome():
 
 def print_guessing_game():
     print("""
-    ********************   GUESSING GAME   ********************\n
-    Enter a number between 1 and 8:   """)
+    ********************   GUESSING GAME   ********************
+    Enter a number between 1 and 8:""")
 
 
 def prompt_user():
@@ -22,9 +22,11 @@ def prompt_user():
           try:
             guess = int(input())
             if guess < 1 or guess > 8:
-                 raise ValueError("Enter A Value Between 1, and 8, Try again:\n  ")
+                 raise ValueError("Enter A Value Between 1, and 8, Try again : ")
           except ValueError:
-              print("Needs To Be a Number Above 0, Try Again:\n     ")
+           print(" !!Enter a NUMBER 1 - 8,  Try Again!! :")
+
+
 
           else:
               print("TEST PRINT")
@@ -53,11 +55,11 @@ def one_game():
         my_guess =prompt_user()
 
         if my_guess < magic_number:
-            print("----------- ** TOO LOW!! ** -----------\n")
+            print(" ** TOO LOW!! ** :")
             trys += 1
 
         elif my_guess > magic_number:
-            print("----------- ** TOO HIGH!! ** -----------\n")
+            print(" ** TOO HIGH!! ** :")
             trys += 1
 
         else:
