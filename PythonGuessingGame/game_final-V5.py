@@ -42,6 +42,29 @@ def number_gen():
         magic_number += 1
     return magic_number
 
+
+def play_again():
+
+ # - Create a way to play again once the game ends
+
+    keep_playing = input(" Do you want to continue playing? : \n").lower()
+
+    if keep_playing in ['y', 'yes']:
+
+        print(" ------- **Generating A New Random Number** -------")
+        return True
+
+    elif keep_playing in ['n', 'no']:
+        print(" THANKS FOR PLAYING!! ")
+        return False
+
+    else:
+        print(" Please enter 'yes' or 'no' ")
+        play_again()
+
+
+
+
 def one_game():
     # STEP 1
     print_welcome()
@@ -72,9 +95,14 @@ def one_game():
             WITH {} TRIES
             ======================""".format(magic_number, my_guess, trys))
             return magic_number
-    # STEP 4
+
+
+
 
 
 
 if __name__ == '__main__':
+    # Play the game Onetime
     one_game()
+    # Continue to play the game
+    play_again()
