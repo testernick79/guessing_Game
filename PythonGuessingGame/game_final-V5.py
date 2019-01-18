@@ -1,4 +1,5 @@
 import random
+import sys
 
 def print_welcome():
     # 1. Welcome the user to the game
@@ -40,6 +41,7 @@ def number_gen():
     magic_number = random.randint(1, 8)
     if magic_number == 0:
         magic_number += 1
+
     return magic_number
 
 
@@ -49,14 +51,25 @@ def play_again():
 
     keep_playing = input(" Do you want to continue playing? : \n").lower()
 
-    if keep_playing in ['y', 'yes']:
+
+    if keep_playing.lower() in ['y', 'yes']:
+
 
         print(" ------- **Generating A New Random Number** -------")
+        one_game()
         return True
 
-    elif keep_playing in ['n', 'no']:
-        print(" THANKS FOR PLAYING!! ")
-        return False
+    elif keep_playing.lower() in ['n', 'no']:
+
+
+        sys.exit("""
+        ===============================================
+                    THANKS FOR PLAYING!!
+        ===============================================            
+        """)
+
+
+
 
     else:
         print(" Please enter 'yes' or 'no' ")
@@ -72,20 +85,25 @@ def one_game():
     print_guessing_game()
     # STEP 3
     trys = 0
+
     magic_number = number_gen()
+    keep_playing = True
     while True:
 
-        my_guess =prompt_user()
+        my_guess = prompt_user()
+        trys += 1
+
 
         if my_guess < magic_number:
             print(" ** TOO LOW!! ** :")
-            trys += 1
+
 
         elif my_guess > magic_number:
             print(" ** TOO HIGH!! ** :")
-            trys += 1
+
 
         else:
+
             print("""
             =======================
             GOOD JOB IT WAS:\n
@@ -94,7 +112,9 @@ def one_game():
             {}
             WITH {} TRIES
             ======================""".format(magic_number, my_guess, trys))
-            return magic_number
+
+            play_again()
+
 
 
 
