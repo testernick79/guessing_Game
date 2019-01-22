@@ -110,7 +110,8 @@ def one_game():
             {}
             YOU GUESSED:\n
             {}
-            WITH {} TRIES
+            WITH:\n 
+            {} TRIES
             ======================""".format(magic_number, my_guess, trys))
 
             play_again()
