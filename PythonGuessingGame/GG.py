@@ -10,7 +10,7 @@ import random
 
 # Generate a random number from 1,20
 def randomNumber():
-    magic_number = random.randint(1, 15)
+    magic_number = random.randint(1, 8)
 
     # Any user can return and use the Magic number returned
     return magic_number
@@ -38,31 +38,23 @@ def checkUserNumber(user_answer, magic_number):
 
 
 # Start the game
-def main():
 
-    # 1. Welcome the user to the game
-    print("""
-    ===============================================
-            Welcome to the Guessing Game
-    ===============================================""")
-
-    # 2. Store a variable -
-           #1a. (i choose this number)
-           #1b. (generated number)
     answer = randomNumber()
     print(answer)
     # 3. keep prompting user for a guess
     attempt = True
+    count = 0
 
     while attempt:
 
-        # validate a number between 1 - 15 that user selects
+        # validate a number between 1 - 8 that user selects
 
             try:
 
                     guess = int(input("Please enter a number: "))
+                    count += 1
             except ValueError:
-                    print("--NOT-- a Number!, Try again: ")
+                    print("--NOT-- a Number!, 1, 10, etc. Try again: ")
                     continue
 
         # once a valid guess is selected, we need to compare
@@ -80,16 +72,70 @@ def main():
                 print("---------------------Great guess!---------------------")
                 print("It was {} and you guessed {}".format(answer, guess ))
                 again =  input("Play Again (Y/N?): ")
-                attempt = False
+                attempt = True
 
                 if again.lower() == "y":
-                    main()
+                    play_continue()
                 if again.lower() == "n":
                     print("""
     ===============================================
                         GAME OVER
                     Thanks For Playing!!
-    ===============================================""")
-                    break
+                    Attempts:   {}
+    ===============================================""".format(count))
+def game_welcome():
 
-main()
+    # 1. Welcome the user to the game
+    print("""
+    ===============================================
+            Welcome to the Guessing Game
+    ===============================================""")
+
+def get_numbers():
+
+
+    # 2. Store a variable -
+           #1a. (i choose this number)
+
+        while True:
+            try:
+
+                guess = int(input("Please enter a number:   "))#1b. (generated number)
+            except ValueError:
+                    print("--NOT-- a Number!, 1, 10, etc. Try again:\n    ")
+            else:
+                return guess
+
+def play_continue():
+        """--Ask the user to play again
+        Returns: Boolean True or False
+        """
+        attempt = True
+        count = 0
+
+        while True:
+
+            keep_playing = (input("Would you like to Play Again y/n?: "))
+            count += 1
+            if keep_playing in ['y', 'Y', 'yes']:
+                return True
+            elif keep_playing in ['n', 'N', 'no']:
+                return False
+
+            else:
+                print("Please enter 'yes' or 'no'\n     ")
+
+
+def play_game():
+
+        continue_play = True
+        game_welcome()
+
+        while play_continue():
+            guess = get_numbers()
+
+
+
+
+
+play_game()
